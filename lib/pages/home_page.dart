@@ -10,32 +10,32 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         title: Text("facebook",style: TextStyle(color: Colors.blueAccent,fontSize: 30,fontWeight: FontWeight.bold),),
         actions: [
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.search,
-              color: Colors.grey[800],
+              color: Colors.white,
             ),
           ),
           IconButton(
             onPressed: () {},
             icon: Icon(
               Icons.camera_alt,
-              color: Colors.grey[800],
+              color: Colors.white,
             ),
           ),
         ],
         elevation: 0,
       ),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[700],
       body: ListView(
         children: <Widget>[
           // #stories #seearchive
           Container(
-            color: Colors.white,
+            color: Colors.black,
             margin: EdgeInsets.only(top: 0),
             padding: EdgeInsets.only(top: 10,left: 10,right: 10),
             height: 120,
@@ -48,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                         width: 45,
                         height: 45,
                         decoration: BoxDecoration(
+                          color: Colors.black,
                             shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: AssetImage("assets/images/user_5.jpeg"),
@@ -58,9 +59,12 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(width: 10,),
                       Expanded(
                         child: Container(
+
+
                           height: 46,
                           padding: EdgeInsets.only(left: 15,right: 15),
                           decoration: BoxDecoration(
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(23),
                             border: Border.all(
                               width: 1,
@@ -71,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                             decoration: InputDecoration(
                               hintText: "What`s on your mind?",
                               border: InputBorder.none,
-                              hintStyle: TextStyle(color: Colors.grey[700]),
+                              hintStyle: TextStyle(color: Colors.grey[400]),
                             ),
                           ),
                         ),
@@ -88,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Icon(Icons.video_call,color: Colors.red,),
                             SizedBox(width: 5,),
-                            Text("Live"),
+                            Text("Live",style: TextStyle(color: Colors.grey[400]),),
                           ],
                         ),
                       ),
@@ -103,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Icon(Icons.photo,color: Colors.green,),
                             SizedBox(width: 5,),
-                            Text("Photo"),
+                            Text("Photo",style: TextStyle(color: Colors.grey[400]),),
                           ],
                         ),
                       ),
@@ -118,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Icon(Icons.location_on,color: Colors.red,),
                             SizedBox(width: 5,),
-                            Text("Check in"),
+                            Text("Check in",style: TextStyle(color: Colors.grey[400]),),
                           ],
                         ),
                       ),
@@ -132,7 +136,7 @@ class _HomePageState extends State<HomePage> {
             margin: EdgeInsets.only(top: 10),
             height: 200,
             padding: EdgeInsets.only(top: 10,bottom: 10),
-            color: Colors.white,
+            color: Colors.black,
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
@@ -171,14 +175,16 @@ class _HomePageState extends State<HomePage> {
               userImage: 'assets/images/user_2.jpeg',
               feedTime: '1 hr ago',
               feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-              feedImage: 'assets/images/story_2.jpeg'
+              feedImage: 'assets/images/story_2.jpeg',
+              feedImage_2: 'assets/images/story_4.jpeg'
           ),
           makeFeed(
               userName: 'User Three',
               userImage: 'assets/images/user_3.jpeg',
               feedTime: '1 hr ago',
               feedText: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined.',
-              feedImage: 'assets/images/story_3.jpeg'
+              feedImage: 'assets/images/story_3.jpeg',
+            feedImage_2: 'assets/images/story_3.jpeg'
           ),
         ],
       ),
@@ -232,10 +238,10 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-  Widget makeFeed({userName, userImage, feedTime, feedText, feedImage}) {
+  Widget makeFeed({userName, userImage, feedTime, feedText, feedImage,feedImage_2}) {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      color: Colors.white,
+      color: Colors.black,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -265,35 +271,56 @@ class _HomePageState extends State<HomePage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text(userName, style: TextStyle(color: Colors.grey[900], fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 1),),
+                            Text(userName, style: TextStyle(color: Colors.grey[400], fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 1),),
                             SizedBox(height: 3,),
-                            Text(feedTime, style: TextStyle(fontSize: 15, color: Colors.grey),),
+                            Text(feedTime, style: TextStyle(fontSize: 15, color: Colors.grey[400]),),
                           ],
                         )
                       ],
                     ),
                     IconButton(
-                      icon: Icon(Icons.more_horiz, size: 30, color: Colors.grey[600],),
+                      icon: Icon(Icons.more_horiz, size: 30, color: Colors.grey[400],),
                       onPressed: () {},
                     )
                   ],
                 ),
                 SizedBox(height: 20,),
-                Text(feedText, style: TextStyle(fontSize: 15, color: Colors.grey[800], height: 1.5, letterSpacing: .7),),
+                Text(feedText, style: TextStyle(fontSize: 15, color: Colors.grey[400], height: 1.5, letterSpacing: .7),),
                 SizedBox(height: 20,),
               ],
             ),
           ),
-
           Container(
+            padding: EdgeInsets.only(top: 5),
             height: 240,
-            decoration: BoxDecoration(
-                image: DecorationImage(
+            width: double.infinity,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Image(
                     image: AssetImage(feedImage),
-                    fit: BoxFit.cover
-                )
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Expanded(
+                  child: Image(
+                    image: AssetImage(feedImage_2),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
             ),
           ),
+
+          // Container(
+          //   height: 240,
+          //   decoration: BoxDecoration(
+          //       image: DecorationImage(
+          //           image: AssetImage(feedImage),
+          //           fit: BoxFit.cover
+          //       )
+          //   ),
+          // ),
           SizedBox(height: 20,),
           Container(
             padding: EdgeInsets.only(left: 10,right: 10),
